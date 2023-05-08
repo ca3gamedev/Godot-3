@@ -1,0 +1,68 @@
+[gd_scene format=2]
+
+[node name="GUI" type="Node2D"]
+
+[node name="Background Color" type="ColorRect" parent="."]
+margin_left = -6.0
+margin_top = -4.0
+margin_right = 645.0
+margin_bottom = 487.0
+color = Color( 0.847059, 0.858824, 0.862745, 1 )
+
+[node name="Game Window" type="ColorRect" parent="."]
+margin_left = 128.0
+margin_top = 34.0
+margin_right = 513.0
+margin_bottom = 369.0
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Left bar" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Left bar"]
+margin_left = 18.0
+margin_top = 50.0
+margin_right = 44.0
+margin_bottom = 212.0
+color = Color( 0.45098, 0.239216, 0.611765, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Left bar"]
+margin_left = 18.0
+margin_top = 225.0
+margin_right = 44.0
+margin_bottom = 251.0
+color = Color( 0.45098, 0.239216, 0.611765, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="Left bar"]
+margin_left = 18.0
+margin_top = 261.0
+margin_right = 44.0
+margin_bottom = 287.0
+color = Color( 0.45098, 0.239216, 0.611765, 1 )
+
+[node name="Left bar2" type="Node2D" parent="."]
+position = Vector2( 29, 475 )
+rotation = -1.5708
+
+[node name="ColorRect" type="ColorRect" parent="Left bar2"]
+margin_left = 18.0
+margin_top = 50.0
+margin_right = 44.0
+margin_bottom = 212.0
+color = Color( 0.239216, 0.611765, 0.278431, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Left bar2"]
+margin_left = 18.0
+margin_top = 225.0
+margin_right = 44.0
+margin_bottom = 251.0
+color = Color( 0.239216, 0.611765, 0.278431, 1 )
+
+[node name="ColorRect3" type="ColorRect" parent="Left bar2"]
+margin_left = 18.0
+margin_top = 261.0
+margin_right = 44.0
+margin_bottom = 287.0
+color = Color( 0.239216, 0.611765, 0.278431, 1 )

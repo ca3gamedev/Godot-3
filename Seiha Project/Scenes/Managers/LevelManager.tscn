@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Data/Levels/Level01/LevelDATA.tscn" type="PackedScene" id=1]
+
+[node name="LevelManager" type="Node2D"]
+
+[node name="LevelDATA" parent="." instance=ExtResource( 1 )]

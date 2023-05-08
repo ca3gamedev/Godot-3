@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Data/Areas/Area Right/RectangleTwo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Objects/PowerUps/Rectangle Blue.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Objects/PowerUps/PowerUpLocalizer.gd" type="Script" id=3]
+
+[node name="Area Right" type="Node2D"]
+script = ExtResource( 3 )
+CodePath = NodePath("Code")
+
+[node name="RectangleTwo" parent="." instance=ExtResource( 1 )]
+PowerUpLocalizerPath = NodePath("..")
+
+[node name="Code" type="Node" parent="."]
+script = ExtResource( 2 )
+PowerUpLocalizerPath = NodePath("..")

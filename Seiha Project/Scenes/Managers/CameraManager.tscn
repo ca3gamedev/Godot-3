@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="CameraManager" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 159, 119 )
+current = true
+zoom = Vector2( 0.85, 0.7 )

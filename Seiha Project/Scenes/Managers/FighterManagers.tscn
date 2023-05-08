@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Data/Areas/Area Left/RectangleOne.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Objects/Area Right.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Managers/FighterManagerLocalizer.gd" type="Script" id=4]
+
+[node name="FighterManagers" type="Node2D"]
+script = ExtResource( 4 )
+PlayerPath = NodePath("Player")
+BlueAreaPath = NodePath("BlueArea")
+RedAreaPath = NodePath("RedArea")
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 153, 179 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 320, 239 )
+
+[node name="BlueArea" parent="." instance=ExtResource( 2 )]
+position = Vector2( 55, 149 )
+PlayerPath = NodePath("../Player")
+FighterManagersPath = NodePath("..")
+
+[node name="RedArea" parent="." instance=ExtResource( 3 )]
+position = Vector2( 244, 181 )
+PlayerPath = NodePath("../Player")
+FighterManagersPath = NodePath("..")

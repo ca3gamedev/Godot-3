@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 188, 34.25 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 101.75 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 171, 10 )
+
+[node name="LevelDATA" type="Node2D"]
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 320, 239 )
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( 150, 172 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -4.0
+margin_top = -2.0
+margin_right = 327.0
+margin_bottom = 197.0
+color = Color( 0.352941, 0.352941, 0.352941, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = -5.0
+margin_top = 187.0
+margin_right = 325.0
+margin_bottom = 242.0
+color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
+
+[node name="GROUND" type="StaticBody2D" parent="." groups=["GROUND"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GROUND"]
+position = Vector2( 162, 220.75 )
+shape = SubResource( 1 )
+
+[node name="WALL" type="StaticBody2D" parent="." groups=["WALL"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WALL"]
+position = Vector2( -5, 90 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WALL"]
+position = Vector2( 333, 92 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="WALL"]
+position = Vector2( 161, 0 )
+shape = SubResource( 3 )
