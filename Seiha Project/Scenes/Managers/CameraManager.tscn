@@ -1,7 +1,15 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Objects/Camera/TrailPointFollower.gd" type="Script" id=1]
 
 [node name="CameraManager" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="TrailPointFollower" type="Position2D" parent="."]
+script = ExtResource( 1 )
+speed = 5.0
+offset = Vector2( -150, -150 )
+
+[node name="Camera2D" type="Camera2D" parent="TrailPointFollower"]
 position = Vector2( 162, 56 )
 current = true
+zoom = Vector2( 1.5, 1.5 )

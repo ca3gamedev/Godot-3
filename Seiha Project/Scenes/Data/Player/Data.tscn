@@ -1,5 +1,6 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=55 format=2]
 
+[ext_resource path="res://2D/Placeholder/Yashiro/walk/walk_20-2.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Objects/Player/Data/Localizer.gd" type="Script" id=2]
 [ext_resource path="res://2D/Placeholder/Yashiro/idle/idle_0-5.png" type="Texture" id=3]
 [ext_resource path="res://2D/Placeholder/Yashiro/idle/idle_0-6.png" type="Texture" id=4]
@@ -17,6 +18,33 @@
 [ext_resource path="res://2D/Placeholder/Yashiro/idle/idle_0-11.png" type="Texture" id=16]
 [ext_resource path="res://2D/Placeholder/Yashiro/idle/idle_0-12.png" type="Texture" id=17]
 [ext_resource path="res://2D/Placeholder/Yashiro/idle/idle_0-14.png" type="Texture" id=18]
+[ext_resource path="res://2D/Placeholder/Yashiro/walk/walk_20-0.png" type="Texture" id=19]
+[ext_resource path="res://2D/Placeholder/Yashiro/walk/walk_20-6.png" type="Texture" id=20]
+[ext_resource path="res://2D/Placeholder/Yashiro/walk/walk_20-7.png" type="Texture" id=21]
+[ext_resource path="res://2D/Placeholder/Yashiro/walk/walk_20-4.png" type="Texture" id=22]
+[ext_resource path="res://2D/Placeholder/Yashiro/walk/walk_20-5.png" type="Texture" id=23]
+[ext_resource path="res://2D/Placeholder/Yashiro/walk/walk_20-3.png" type="Texture" id=24]
+[ext_resource path="res://2D/Placeholder/Yashiro/Jump/jump_41-4.png" type="Texture" id=25]
+[ext_resource path="res://2D/Placeholder/Yashiro/Jump/jump_41-2.png" type="Texture" id=26]
+[ext_resource path="res://2D/Placeholder/Yashiro/Jump/jump_41-1.png" type="Texture" id=27]
+[ext_resource path="res://2D/Placeholder/Yashiro/Jump/jump_41-0.png" type="Texture" id=28]
+[ext_resource path="res://2D/Placeholder/Yashiro/Jump/jump_41-3.png" type="Texture" id=29]
+[ext_resource path="res://2D/Placeholder/Yashiro/walk/walk_20-1.png" type="Texture" id=30]
+[ext_resource path="res://addons/net.kivano.fsm/content/fsm.gd" type="Script" id=31]
+[ext_resource path="res://Scenes/Data/Player/FSM/transitions/EmptyAir/EmptyAir.gd" type="Script" id=32]
+[ext_resource path="res://Scenes/Data/Player/FSM/states/IDLE/IDLE.tscn" type="PackedScene" id=33]
+[ext_resource path="res://Scenes/Data/Player/FSM/transitions/EmptyAir/EmptyAir.tscn" type="PackedScene" id=34]
+[ext_resource path="res://Scenes/Data/Player/FSM/transitions/Down Check Platform/Down Check Platform.gd" type="Script" id=35]
+[ext_resource path="res://Scenes/Data/Player/FSM/transitions/No button/No button.tscn" type="PackedScene" id=36]
+[ext_resource path="res://Scenes/Data/Player/FSM/transitions/Jump Button/Jump Button.tscn" type="PackedScene" id=37]
+[ext_resource path="res://Scenes/Data/Player/FSM/transitions/On ground/On ground.tscn" type="PackedScene" id=38]
+[ext_resource path="res://Scenes/Data/Player/FSM/transitions/KeyBoardInput/KeyBoardInput.tscn" type="PackedScene" id=39]
+[ext_resource path="res://Scenes/Data/Player/FSM/states/JUMP/JUMP.tscn" type="PackedScene" id=40]
+[ext_resource path="res://Scenes/Data/Player/FSM/transitions/Down Check Platform/Down Check Platform.tscn" type="PackedScene" id=41]
+[ext_resource path="res://Scenes/Data/Player/FSM/states/MOVE/MOVE.tscn" type="PackedScene" id=45]
+[ext_resource path="res://Scenes/Objects/Player/FSM/Data.gd" type="Script" id=46]
+[ext_resource path="res://Scenes/Data/Player/FSM/transitions/MaxJump/MaxJump.tscn" type="PackedScene" id=48]
+[ext_resource path="res://Scenes/Data/Player/FSM/states/Fall/Fall.tscn" type="PackedScene" id=50]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -24,24 +52,332 @@ animations = [ {
 "loop": true,
 "name": "IDLE",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 28 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 29 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "JUMP",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 30 ), ExtResource( 1 ), ExtResource( 24 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "WALK",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 18.0
 height = 80.0
 
-[node name="Data" type="KinematicBody2D"]
+[sub_resource type="Animation" id=3]
+resource_name = "LEFT"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "RIGHT"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "IDLE"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "IDLE" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Jump"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "JUMP" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ "IDLE" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "WALK"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/AnimatedSprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "WALK" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 32
+collision_mask = 30
 script = ExtResource( 2 )
 PlayerKinematicPath = NodePath(".")
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+[node name="Data" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource( 46 )
+max_fall = 10.0
+jump_force = 20.0
+walk_speed = 5.0
+gravity = 1.0
+
+[node name="Sprite" type="Node2D" parent="."]
+scale = Vector2( -1, 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Sprite"]
 position = Vector2( 2, -61 )
 frames = SubResource( 2 )
 animation = "IDLE"
-frame = 10
 speed_scale = 2.0
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -1, -60 )
 shape = SubResource( 1 )
+
+[node name="LEFT RIGHT" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+anims/LEFT = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+anims/RIGHT = SubResource( 5 )
+
+[node name="Animations" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+anims/IDLE = SubResource( 6 )
+anims/Jump = SubResource( 9 )
+anims/RESET = SubResource( 7 )
+anims/WALK = SubResource( 8 )
+
+[node name="FSM2D" type="Node2D" parent="."]
+script = ExtResource( 31 )
+"Initial state:" = "IDLE"
+"Create new:/Subdirectory for FSM nodes:" = "FSM"
+"Create new:/Create state with name:" = null
+"Create new:/Create transition with name:" = null
+GraphData = {
+"Down Button": Vector2( 1434, 401 ),
+"Down Button_": Vector2( 1434, 401 ),
+"Down Check Platform": Vector2( 324, 789 ),
+"EmptyAir": Vector2( 896, 330 ),
+"EmptyAir_": Vector2( 1094, 358 ),
+"Fall": Vector2( 986, 516 ),
+"FallCheck": Vector2( 997, 358 ),
+"FallCheck_": Vector2( 997, 358 ),
+"FallCheck__": Vector2( 942, 339 ),
+"FallStart": Vector2( 809.5, 365 ),
+"FallStart_": Vector2( 810, 365 ),
+"Fall_": Vector2( 986, 516 ),
+"Fall__": Vector2( 933, 525 ),
+"IDLE": Vector2( 169, 271 ),
+"IDLE_": Vector2( 169, 271 ),
+"IDLE__": Vector2( 169, 271 ),
+"JUMP": Vector2( 419, 569 ),
+"JUMP_": Vector2( 419, 569 ),
+"JUMP__": Vector2( 419, 569 ),
+"Jump Button": Vector2( 108, 554 ),
+"Jump Button_": Vector2( 108, 554 ),
+"Jump Button__": Vector2( 108, 554 ),
+"KeyBoardInput": Vector2( 319, 84 ),
+"KeyBoardInput_": Vector2( 319, 84 ),
+"KeyBoardInput__": Vector2( 319, 84 ),
+"KeyboardCheckPlatform": Vector2( 1005, 119 ),
+"KeyboardCheckPlatform_": Vector2( 1005, 119 ),
+"MOVE": Vector2( 718, 21 ),
+"MOVE_": Vector2( 718, 21 ),
+"MOVE__": Vector2( 661, 99 ),
+"MaxJump": Vector2( 692, 547 ),
+"MaxJump_": Vector2( 663, 578 ),
+"MaxJump__": Vector2( 663, 578 ),
+"MoveOnPlatform": Vector2( 1035, 83 ),
+"MoveOnPlatform_": Vector2( 1035, 142 ),
+"No button": Vector2( 653, 254 ),
+"No button_": Vector2( 699, 264 ),
+"No button__": Vector2( 675, 246 ),
+"On ground": Vector2( 501, 379 ),
+"On ground_": Vector2( 501, 379 ),
+"On ground__": Vector2( 471, 366 ),
+"On platform": Vector2( 1257, 285 ),
+"On platform2": Vector2( 1224, 364 ),
+"On platform2_": Vector2( 1224, 364 ),
+"On platform2__": Vector2( 1224, 364 ),
+"On platform_": Vector2( 1257, 285 ),
+"On platform__": Vector2( 1229, 528 ),
+"OnPlatform": Vector2( 1302, 548 ),
+"OnPlatform_": Vector2( 1302, 548 ),
+"Platform ": Vector2( 1308, 151 ),
+"Platform Move": Vector2( 1353, 74 ),
+"Platform Move_": Vector2( 1353, 74 ),
+"Platform No button": Vector2( 1519, 192 ),
+"Platform No button_": Vector2( 1519, 192 ),
+"Platform _": Vector2( 1308, 151 ),
+"WALK": Vector2( 636.5, 223 ),
+"WALK_": Vector2( 637, 223 ),
+"WALK__": Vector2( 637, 223 )
+}
+
+[node name="States" type="Node2D" parent="FSM2D"]
+
+[node name="IDLE" parent="FSM2D/States" instance=ExtResource( 33 )]
+
+[node name="MOVE" parent="FSM2D/States" instance=ExtResource( 45 )]
+
+[node name="JUMP" parent="FSM2D/States" instance=ExtResource( 40 )]
+
+[node name="Fall" parent="FSM2D/States" instance=ExtResource( 50 )]
+
+[node name="Transitions" type="Node2D" parent="FSM2D"]
+
+[node name="KeyBoardInput" parent="FSM2D/Transitions" instance=ExtResource( 39 )]
+path2SourceStates = [ NodePath("../../States/IDLE") ]
+path2TargetState = NodePath("../../States/MOVE")
+
+[node name="Jump Button" parent="FSM2D/Transitions" instance=ExtResource( 37 )]
+path2SourceStates = [ NodePath("../../States/IDLE"), NodePath("../../States/MOVE") ]
+path2TargetState = NodePath("../../States/JUMP")
+
+[node name="On ground" parent="FSM2D/Transitions" instance=ExtResource( 38 )]
+path2SourceStates = [ NodePath("../../States/Fall") ]
+path2TargetState = NodePath("../../States/IDLE")
+
+[node name="No button" parent="FSM2D/Transitions" instance=ExtResource( 36 )]
+path2SourceStates = [ NodePath("../../States/MOVE") ]
+path2TargetState = NodePath("../../States/IDLE")
+
+[node name="MaxJump" parent="FSM2D/Transitions" instance=ExtResource( 48 )]
+path2SourceStates = [ NodePath("../../States/JUMP") ]
+path2TargetState = NodePath("../../States/Fall")
+
+[node name="EmptyAir" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 34 )]
+script = ExtResource( 32 )
+path2SourceStates = [ NodePath("../../States/IDLE"), NodePath("../../States/MOVE") ]
+path2TargetState = NodePath("../../States/Fall")
+
+[node name="Down Check Platform" type="Node" parent="FSM2D/Transitions" instance=ExtResource( 41 )]
+script = ExtResource( 35 )
+path2SourceStates = [ NodePath("../../States/IDLE") ]
+path2TargetState = NodePath("../../States/Fall")
+
+[node name="GroundRaycast" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+position = Vector2( 0, -39 )
+enabled = true
+cast_to = Vector2( 0, 48 )
+collision_mask = 44

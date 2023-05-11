@@ -1,7 +1,4 @@
-[gd_scene load_steps=4 format=2]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 188, 34.25 )
+[gd_scene load_steps=6 format=2]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10, 177.375 )
@@ -9,35 +6,51 @@ extents = Vector2( 10, 177.375 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 171, 10 )
 
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 319.5, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 108.5, 552.5 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 1811, 31 )
+
 [node name="LevelDATA" type="Node2D"]
 
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 320, 239 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Position2D2" type="Position2D" parent="."]
 position = Vector2( 150, 172 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -4.0
-margin_top = -2.0
-margin_right = 327.0
-margin_bottom = 197.0
-color = Color( 0.352941, 0.352941, 0.352941, 1 )
+margin_left = -403.0
+margin_top = -821.0
+margin_right = 3227.0
+margin_bottom = 184.0
+color = Color( 0.87451, 0.87451, 0.87451, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="ColorRect2" type="ColorRect" parent="."]
-margin_left = -5.0
+margin_left = -397.0
 margin_top = 187.0
-margin_right = 325.0
+margin_right = 3228.0
 margin_bottom = 242.0
 color = Color( 0.0980392, 0.0980392, 0.0980392, 1 )
 
-[node name="GROUND" type="StaticBody2D" parent="." groups=["GROUND"]]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GROUND"]
-position = Vector2( 162, 220.75 )
-shape = SubResource( 1 )
-
-[node name="WALL" type="StaticBody2D" parent="." groups=["WALL"]]
+[node name="WALL" type="Area2D" parent="." groups=["WALL"]]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WALL"]
 position = Vector2( -11, 14 )
@@ -50,3 +63,50 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="WALL"]
 position = Vector2( 167, -147 )
 shape = SubResource( 3 )
+
+[node name="ColorRect3" type="ColorRect" parent="."]
+margin_left = 691.0
+margin_top = 20.0
+margin_right = 1328.0
+margin_bottom = 44.0
+color = Color( 0.113725, 0.113725, 0.113725, 1 )
+
+[node name="P1" type="StaticBody2D" parent="ColorRect3" groups=["Platform"]]
+collision_layer = 4
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect3/P1"]
+position = Vector2( 319, 12 )
+shape = SubResource( 8 )
+one_way_collision = true
+
+[node name="ColorRect4" type="ColorRect" parent="."]
+margin_left = 1877.0
+margin_top = 26.0
+margin_right = 2514.0
+margin_bottom = 42.0
+color = Color( 0.113725, 0.113725, 0.113725, 1 )
+
+[node name="WALL LEFT" type="StaticBody2D" parent="." groups=["WALL"]]
+position = Vector2( -147, -155 )
+collision_layer = 16
+collision_mask = 32
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WALL LEFT"]
+position = Vector2( -98.5, -140.5 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WALL LEFT"]
+position = Vector2( 3270, -188 )
+shape = SubResource( 4 )
+
+[node name="GROUND" type="StaticBody2D" parent="." groups=["GROUND"]]
+collision_layer = 8
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GROUND"]
+position = Vector2( 1415, 216 )
+shape = SubResource( 7 )

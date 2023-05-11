@@ -10,7 +10,7 @@ var PlayerD
 
 func _ready():
 	yield(get_tree(), "idle_frame")
-	PlayerD = PowerUpLocalizer.Player.PlayerCodeLocalizer.PlayerData
+	PlayerD = PowerUpLocalizer.Player.PlayerDataLocalizer.get_node("Data")
 
 ###FUNCTIONS
 
