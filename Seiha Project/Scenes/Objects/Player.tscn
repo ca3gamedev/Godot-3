@@ -9,5 +9,3 @@ PlayerDataLocalizerPath = NodePath("PlayerK")
 
 [node name="PlayerK" parent="." instance=ExtResource( 1 )]
 unique_name_in_owner = true
-collision_layer = 32
-collision_mask = 30

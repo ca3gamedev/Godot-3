@@ -28,18 +28,6 @@ func prepare(inNewStateID, inArg0 = null, inArg1 = null, inArg2 = null):
 	pass
 
 func transitionCondition(inDeltaTime, inParam0=null, inParam1=null, inParam2=null, inParam3=null, inParam4=null): 
-	
-	var dir = 0
-		
-	if Input.is_action_pressed("LEFT") and not Input.is_action_pressed("RIGHT"):
-		dir = 1
-	if Input.is_action_pressed("RIGHT") and not Input.is_action_pressed("LEFT"):
-		dir = 1
-	
-	if Input.is_action_pressed("LEFT") and Input.is_action_pressed("RIGHT"):
-		dir = 0
-	
-	if dir == 1:
+	if Input.is_action_just_released("C"):
 		return true
-	else :
-		return false;
+	return false;
