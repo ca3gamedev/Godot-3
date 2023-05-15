@@ -115,6 +115,7 @@ D={
 2d_physics/layer_4="Ground"
 2d_physics/layer_5="LevelWalls"
 2d_physics/layer_6="Player"
+2d_physics/layer_7="Enemy"
 
 [physics]
 

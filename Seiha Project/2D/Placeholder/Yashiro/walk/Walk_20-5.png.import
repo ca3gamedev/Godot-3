@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/walk_20-1.png-e3dfaf56ca2aa9f2b50ecf28a2d429b3.stex"
+path="res://.import/Walk_20-5.png-b7d0518508837743ba35c93f5982cd15.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://2D/Placeholder/Yashiro/walk/walk_20-1.png"
-dest_files=[ "res://.import/walk_20-1.png-e3dfaf56ca2aa9f2b50ecf28a2d429b3.stex" ]
+source_file="res://2D/Placeholder/Yashiro/walk/Walk_20-5.png"
+dest_files=[ "res://.import/Walk_20-5.png-b7d0518508837743ba35c93f5982cd15.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

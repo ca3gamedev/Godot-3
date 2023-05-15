@@ -16,6 +16,27 @@ func GetKey() -> Vector2:
 	
 	return dir
 
+func GetAttacks():
+	var dir = "Null"
+	
+	if Input.is_action_just_released("A"):
+		dir = "A"
+	if Input.is_action_just_released("B"):
+		dir = "B"
+	if Input.is_action_just_released("C"):
+		dir = "C"
+	if Input.is_action_just_released("D"):
+		dir = "D"
+	
+	return dir
+
+func CheckAttacks():
+	var dir = GetAttacks()
+	if dir != "Null":
+		var attack = $"%Attacks".GetAttackId(dir)
+		Anim.set("parameters/BasicAttack/blend_position", Vector2(attack, 0))
+		state_machine.travel("BasicAttack")
+
 func JumpKey():
 	if Input.is_action_pressed("JUMP"):
 		return true
@@ -36,10 +57,7 @@ func IDLE():
 	var dir = GetKey()
 	
 	Anim.set("parameters/MOVE/blend_position", Vector2(dir.x, 0))
-	if JumpKey():
-		state_machine.travel("JUMP")
-	DownCheckPlatforms()
-	CheckGround()
+	UpdateIdle()
 	
 func WALK(delta):
 	var dir = GetKey()
@@ -48,10 +66,14 @@ func WALK(delta):
 	var speed = $"%Data".walk_speed * dir.x * delta * $"%Data".x_powerup
 	Root.move_and_collide(Vector2(speed, 0))
 	SetXDir(dir.x)
+	UpdateIdle()
+	
+func UpdateIdle():
 	if JumpKey():
 		state_machine.travel("JUMP")
 	DownCheckPlatforms()
 	CheckGround()
+	CheckAttacks()
 	
 func JUMP(delta):
 	var dir = GetKey()
@@ -87,3 +109,7 @@ func SetPlatformerCollision():
 func CheckGround():
 	if not $"%GroundRaycast".is_colliding():
 		MakeFall()
+
+func _on_Attack_body_entered(body):
+	if body.is_in_group("ENEMY"):
+		body.HIT("Weak")

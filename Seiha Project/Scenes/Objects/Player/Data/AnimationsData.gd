@@ -18,6 +18,13 @@ func GetAttackNameOfSlot(slot):
 		"C" : return GetAttackName(Attack3)
 		"D" : return GetAttackName(Attack4)
 
+func GetAttackId(slot):
+	match(GetAttackNameOfSlot(slot)):
+		"Weak Punch" : return 0
+		"Weak Kick" : return 1
+		"Strong Punch" : return 2
+		"Strong Kick" : return 3
+
 func GetAttackName(id):
 	match(id):
 		Attack.WeakPunch : return "Weak Punch"

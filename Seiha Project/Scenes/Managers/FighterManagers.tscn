@@ -1,16 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Objects/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Data/Areas/Area Left/RectangleOne.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Objects/Area Right.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Managers/FighterManagerLocalizer.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Managers/Input Manager/InputChecker.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Managers/LevelManager.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Scenes/Objects/Enemies/Basic/EnemyBasic.tscn" type="PackedScene" id=7]
 
 [node name="FighterManagers" type="Node2D"]
 script = ExtResource( 4 )
 PlayerPath = NodePath("Player")
 BlueAreaPath = NodePath("BlueArea")
 RedAreaPath = NodePath("RedArea")
+
+[node name="LevelManager" parent="." instance=ExtResource( 6 )]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 unique_name_in_owner = true
@@ -30,3 +37,6 @@ PlayerPath = NodePath("../Player")
 FighterManagersPath = NodePath("..")
 
 [node name="InputChecker" parent="." instance=ExtResource( 5 )]
+
+[node name="Enemy" parent="." instance=ExtResource( 7 )]
+position = Vector2( 623, 116 )
