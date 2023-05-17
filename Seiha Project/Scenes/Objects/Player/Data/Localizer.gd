@@ -16,3 +16,6 @@ func GetState():
 
 func GetAnim():
 	return $AnimationTree
+
+func GetCurrentSkill(button):
+	return $"%Attacks".GetAttackNameOfSlot(button)
