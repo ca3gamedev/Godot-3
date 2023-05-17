@@ -54,7 +54,7 @@ func CheckVInput():
 			id_attack += 1
 
 func UpdateSkillLabel():
-	$"Skill Name".text = References.PlayerAttacks.GetAttackID(id_attack)
+	$"Skill Name".text = References.PlayerAttacks.GetAttackName(id_attack)
 
 func SetCurrentButtonSkill():
 	if Input.is_action_just_released("A"):

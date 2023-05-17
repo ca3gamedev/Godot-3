@@ -33,7 +33,7 @@ func GetAttacks():
 func CheckAttacks():
 	var dir = GetAttacks()
 	if dir != "Null":
-		var attack = $"%Attacks".GetAttackId(dir)
+		var attack = $"%Attacks".GetAttackID(dir)
 		Anim.set("parameters/BasicAttack/blend_position", Vector2(attack, 0))
 		state_machine.travel("BasicAttack")
 

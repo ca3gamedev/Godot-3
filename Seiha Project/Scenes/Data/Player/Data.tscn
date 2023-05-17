@@ -36,6 +36,7 @@
 [ext_resource path="res://2D/Placeholder/hitbox.png" type="Texture" id=34]
 [ext_resource path="res://2D/Placeholder/Yashiro/Attacks/Weak Punch/weak punch_200-2.png" type="Texture" id=35]
 [ext_resource path="res://Scenes/Objects/Player/FSM/W letter.gd" type="Script" id=36]
+[ext_resource path="res://Scenes/Objects/Player/FSM/Attacks 2.0.gd" type="Script" id=37]
 [ext_resource path="res://2D/Placeholder/Yashiro/Attacks/Weak Punch/weak punch_200-0.png" type="Texture" id=42]
 [ext_resource path="res://2D/Placeholder/Yashiro/Attacks/Strong Punch/Strong Punch_210-5.png" type="Texture" id=43]
 [ext_resource path="res://2D/Placeholder/Yashiro/Attacks/Strong Punch/Strong Punch_210-6.png" type="Texture" id=44]
@@ -62,7 +63,6 @@
 [ext_resource path="res://2D/Placeholder/Yashiro/Attacks/Weak Kick/Weak Kick_230-0.png" type="Texture" id=68]
 [ext_resource path="res://2D/Placeholder/Yashiro/Attacks/Strong Kick/Strong Kick_260-2.png" type="Texture" id=69]
 [ext_resource path="res://2D/Placeholder/Yashiro/Attacks/Weak Kick/Weak Kick_230-6.png" type="Texture" id=70]
-[ext_resource path="res://Scenes/Objects/Player/Data/AnimationsData.gd" type="Script" id=71]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -990,7 +990,7 @@ gravity = 800.0
 
 [node name="Attacks" type="Node" parent="FSM"]
 unique_name_in_owner = true
-script = ExtResource( 71 )
+script = ExtResource( 37 )
 
 [node name="Code" type="Node" parent="FSM"]
 script = ExtResource( 33 )
